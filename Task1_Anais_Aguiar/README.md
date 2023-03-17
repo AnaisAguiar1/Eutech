@@ -69,7 +69,6 @@ We have a few requirements that we have to achieve in this script.
 
 For this proyect we only needed to use **Python**.
 
-<br>
 
 ### ***Development.***. <a name="id4"></a>
 
