@@ -1,0 +1,21 @@
+
+{
+    "backup_directories_to_copy": 
+        [
+        "C:/Users/anais/Documents/scripts",
+        "C:/Users/anais/Documents/failover"
+        ],
+
+    "backup_destinations_directories": 
+        [
+        "C:/Users/anais/Desktop/backups.varsovia",
+        "C:/Users/anais/Desktop/backups.varsovia"
+        ],
+    
+    "log_file_of_errors_and_process": 
+        [
+        "C:/Users/anais/Desktop/backups.varsovia/errores.backups/errors.log"
+        ],
+        
+    "max_backups_to_reach": 8
+    }
