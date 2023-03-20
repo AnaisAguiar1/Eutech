@@ -49,6 +49,10 @@ Requirements that you have to include in this proyect are the next ones:
 
 * Create firewall rules to allow inbound and outbound traffic for specific ports, protocols, and IP addresses.
 
+(habilitar reglas: puerto 22 ssh, puerto 80 http, puerto 443 https, puerto 25 smtp)
+
+https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands
+
 <br>
 
 * Test the firewall rules to ensure that they are working correctly.
@@ -66,7 +70,12 @@ Requirements that you have to include in this proyect are the next ones:
 
 </center>
 
-We will use 
+We will use two differents Virtual Machines
+
+|   MV  |      OS      |     Version     |   IP   |   ROL  |
+|-------|--------------|-----------------|--------|--------|
+|   1   | Windows 2010 | Enterprice 2016 |        | Cliente|
+|   2   |    Ubuntu    |   Ubuntu 20.04  |        | Cliente|
 
 ### ***Development.*** <a name="id4"></a>
 
@@ -74,6 +83,14 @@ We will use
 
 
 ## ***Install and configure a firewall on both Windows and Linux operating systems.***
+
+</center>
+
+<br>
+
+<center>
+
+## ***UBUNTU.***
 
 </center>
 
