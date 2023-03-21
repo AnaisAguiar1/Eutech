@@ -113,14 +113,11 @@ sudo ufw enable ----> To start it.
 
 ![](img/04.png)
 
-![](img/03.png)
-
 </center>
 
-After we have the ufw enable and running we can see wich rules we have configurated using the command ``ufw status numbered``, this command it's going to show us all the rules that we have configurated and it will order them by numbers.
+After we have the ufw enable and running we can see wich rules we have configurated using the command ``ufw status``, this command it's going to show us all the rules that we have configurated. In this case it's empty because we have no rules created.
 
-*** INSERTAR IMAGEN DEL CORTAFUEGOS SIN NINGUNA REGLA APLICADA***
-
+![](img/03.png)
 
 We needed to now our IP address, so we also use the command ``ip a``, we are goind to need it later.
 
@@ -178,23 +175,22 @@ We can connect by **ssh** from another computer to this one using **ssh**.
 
 We can also deny or allow the ssh conection to an specific ip address or to an ip range in case you don't want someone in specific conecting to your computer or in case you only want to accept connection ssh just with one computer.
 
-To allow just one specific ip addresswe create this rule, we used the command ``"sudo ufw allow from 192.168.43.19 proto tcp to any port 22"``.
+To allow just one specific ip address we create this rule, we used the command ``"sudo ufw allow from 192.168.43.19 proto tcp to any port 22"``.
 So now, only the machine with that ip can make a ssh conection with us.
 
 <br>
 
-**insertar foto de solo allow esa ip para ssh**
+![](img/18.png)
 <br>
 
-If we want to reject or deny the ssh conection we add the next rule ``"ufw deny from any to any port 22 proto tcp"`` (here we are rejecting to all ip directions, so only the one that we accepted before can be able to conect by ssh with us)
+If we want to reject or deny the ssh conection we add the next rule ``"ufw deny from 192.168.43.0/24 to any port 22 proto tcp"``, with this command we will be rejecting all the specified network (192.168.43.0/24), except for the one that we accepted before (192.168.43.19), so we can be able to conect by ssh with the server.
+
+Checked that the rules were apllied correctly using the command ``"ufw status numbered"``, we will see our rules running, so, now we can test them.
 
 <br>
 
-**insertar foto de la restriccion de red o de la restriccion de ip**
+![](img/19.png)
 <br>
-
-Checked that the rules were apllied correctly using the command ``"ufw status"``, we will see our rules running, so, now we can test them.
-
 
 <center>
 
@@ -210,7 +206,7 @@ Now you can see that the rules about the **SSH Protocol** are working.
 
 Only the machine with the ip address **192.168.43.19** can conect by ssh with our ubuntu machine, and the rest of machines with any ip address are going to be rejected.
 
-To test if the rule ait`s working, the machine with the ip allow to ssh, in this case it's windows, so we had to install the program putty to make the conection by ssh with our ubuntu machine.
+To test if the rule ait`s working, the machine with the ip allow to ssh, in this case it's windows, so we had to install the program **putty** to make the conection by ssh with our ubuntu machine.
 
 <br>
 
@@ -226,7 +222,9 @@ Insert the ip address of the machine that we want to connect with, in this case 
 
 <br>
 
-We will need the ``"username"`` and ``"password"``, without this two requirements you can`t connect, after this it's connected to the ubuntu machine by ssh from the windows machine
+We will need the ``"username"`` and ``"password"``, without this two requirements you can`t connect, after this it's connected to the server machine by ssh from the windows machine.
+
+In the image below you can see that we are connected to the **server** wich use the ip address **192.168.43.193.**
 
 <br>
 
@@ -234,7 +232,15 @@ We will need the ``"username"`` and ``"password"``, without this two requirement
 
 <br>
 
-**INSERTAR GIFT DEMOSTRANDO QUE LA IP PERMITIDA CONECTA Y CUANDO INTENTAMOS O OTRAS IP NO**
+Then if we try to connect with another ip address machines that are not allowed, are actually rejected we are not going to be able to connect.
+
+Below you will see an example. We tried to connect with an ubuntu machine using the ip **192.168.43.209**, you will see it was rejected, we couldn't connect to the server.
+
+<br>
+
+![](img/20.png)
+
+<br>
 
 <br>
 
@@ -250,38 +256,19 @@ The HTTP protocol is based on the client-server model, where a client (such as a
 
 When a client, such as a web browser, sends an HTTP request to a server, the request is sent through the server's port 80, unless another port is explicitly specified. Similarly, when a web server responds to an HTTP request, the response is sent back to the client through port 80, unless another port is specified in the response.
 
-We are going to create the rule to make the protocol HTTP allow, we have to make sure that the HTTP rule is enabled in ufw. To do this, we run the following command:
+We are going to create the rule to deny the HTTP protocol, we have to make sure that the HTTP rule is denied in ufw. To do this, we run the following commands:
 
 ```
-sudo ufw app list.
+sudo ufw deny http
+sudo ufw status numbered
 ```
 
 <br>
 
-**CAPTURAAAAA**
+![](img/21.png)
 <br>
 
-After having the HTTP rule enabled, we have to look for the entry for **"Apache"** and make sure that it is enabled. If the input is not enabled, you can enable it with the following command: 
-
-```
-sudo ufw allow 'Apache'.
-```
-<br>
-
-**CAPTURAAAAA**
-<br>
-
-In case you are using another web server, or if you want to configure the HTTP rule manually, it can also be done with the following command:
-
-```
-sudo ufw allow 80/tcp
-```
-
-With this command we will enable incoming traffic through **port 80** for the **TCP protocol**.
-
-To be sure the rule was apllied correctly we use the command line ``sudo ufw status``, this command will show us the actual status of our ufw rules,including the port 80 if this one were configurated correctly.
-
-<br>
+After having the HTTP rule denied, we have to look for the entry for **"Apache"** and make sure that we have not access. In case you want to allow the http protocol in your sever, you can enable it with the following command: ``sudo ufw allow http`` 
 
 ## **TESTING HTTP PROTOCOL**
 
@@ -289,45 +276,43 @@ To be sure the rule was apllied correctly we use the command line ``sudo ufw sta
 
 To verify that the rule was applied correctly we have a couples of options:
 
-**1) Using the ``curl`` command** from the command line:
+**1) Accessing the website from a browser:** Open a web browser on your computer and type the IP address of your server or domain name in the browser address bar, followed by ":80".
 
 ```
-curl http:/localhost/
+http://192.168.43.193:80/
 ```
 
-If the response includes the content of the default web page of the web server, it means that the rule for port 80 has been configured correctly and is working.
+In the image below you can see the connection was rejected, so the firewall rule it's working.
 
 <br>
 
-**CAPTURAAAAA**
+![](img/22.png)
 <br>
 
-**2) Accessing the website from a browser:** Open a web browser on your computer and type the IP address of your server or domain name in the browser address bar, followed by ":80".
+On this other imagen we tried to use the service from the server, so we can see that the apache service it's working because it's a local service connection.
 
 ```
-http://your-server-ip-address:80/
+http://localhost:80/
 ```
 
-If the web page loads correctly, it means that the rule for port 80 has been configured correctly and is working.
-
 <br>
 
-**CAPTURAAAAA**
+![](img/23.png)
 <br>
 
-**3) Checking the status of the rule in UFW:** Open a terminal and run the following command:
+With this we proved that our firewall rules created are working correctly.
 
-```
-sudo ufw status
-```
 
-This will show the current status of the UFW rules, including the rule for port 80 if it has been configured correctly. If the rule is shown as "ALLOW" and has the correct port number, it means that the rule is active and working correctly.
 
-<br>
-
-**CAPTURAAAAA**
-<br>
-
+> **NOTE:** In case you  want to configure the HTTP rule manually using a different port, it can also be done with the following command, so you can specify the port that you want to use for it.
+>
+>```
+>sudo ufw deny 8080/tcp
+>```
+>
+>With this command we will disable incoming traffic through **port 8080** >for the **TCP protocol**.
+>
+>To be sure the rule was apllied correctly we use the command line ``sudo ufw status``, this command will show us the actual status of our ufw >rules,including the port 8080 if this one were configurated correctly.
 
 <br>
 
@@ -343,22 +328,17 @@ HTTPS is commonly used in financial transactions, online purchases, and in any s
 
 > It is important to note that other protocols, such as HTTPS, also use port 80 by default for communication with the server, but **port 443 is typically used for secure communication over HTTPS**.
 
-We are going to add this rule to our firewall, first of all we need to verify that the rule to the port 443 it's enabled in ufw.
+We are going to add this rule to our firewall, first of all we need to verify that the rule to the **port 443** it's enabled in ufw.
 
 ```
 sudo ufw status ---> To check if the rule exist.
 sudo ufw allow 443/tcp ---> To add the rule to our firewall and make the port 443 enable.
 ```
-<br>
-
-***CAPTUURAAAA***
-<br>
-
 Once we created the rule for protocol HHTPS using the port 443 we can check it using again the command ``sudo ufw status`` and this time we have to be ables to see the port an protocol being able and open to use.
 
 <br>
 
-***CAPTUURAAAA***
+![](img/24.png)
 <br>
 
 With this rule working we can use the browser in a more secure way and create web domains more secures than with the HTTP protocol.
@@ -369,28 +349,54 @@ With this rule working we can use the browser in a more secure way and create we
 
 <br>
 
-To check and prove if the firewall rule that we added about the **HTTPS protocol** it's working we can go to the browser and now we are going to be ables to open a HTTPS direction, this give us more security and a safe domain.
+To check and prove if the firewall rule that we added about the **HTTPS protocol** it's working we can go to the browser and now we are going to be ables to open a HTTPS direction, this give us more security and a safe domain, it should appear the **https** before the url direction, in this case we used:
+
+```
+https://192.168.43.193:443
+```
+
+We can see below that the connectioin it's not complete secure, this it's because we are using a demo SSL certificate to prove the connection and if the firewall rule it's working.
 
 <br>
 
-***CAPTUURAAAA***
+![](img/25.png)
 <br>
-
-<br>
-
-## **Protocol SMTP:**
-
-<br>
-
 
 <br>
 
 ## **Protocol MySQL:**
+<br>
+
+Enabling **port 3306** in UFW (Uncomplicated Firewall) in Ubuntu will let us allow incoming connections to a **MySQL database** server on that port.
+
+Port 3306 is the default port used by MySQL to accept incoming network connections, and if this port is not open in the firewall, external clients will not be able to connect to the MySQL database server.
+
+With this protocol we can allow the remote access to our database of MySQL, so it's easier to connect and modify it for externals clients.
+
+To allow this protocol we applied the command ``sudo ufw allow mysql`` and we checked that was correctly apllied using the command ``ufw status numbered``
 
 <br>
 
+![](img/26.png)
+<br>
 
 <br>
+
+## **TESTING MySQL PROTOCOL**
+<br>
+
+To prove that the firewall rule created it's working we are going to connect to the Mysql database from another machine, using the command:``mysql -u user -p -h ipserver``
+
+```
+mysql -u anais -p -h 192.168.43.193
+```
+
+<br>
+
+![](img/27.png)
+<br>
+
+We were able to connect to the mysql database remotely, for this we need to know the IP address of the server and the password, without these two requirements we could not connect.
 
 ## ***Closure***. <a name="id5"></a>
 
