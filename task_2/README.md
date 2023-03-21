@@ -396,6 +396,8 @@ mysql -u anais -p -h 192.168.43.193
 ![](img/27.png)
 <br>
 
+Once port 3306 has been enabled on the UFW, external clients should be able to connect to the MySQL database server on that port. It is important to note that by allowing traffic on a port, you are opening the door to potential security threats, so it is important to ensure that other appropriate security measures are in place to protect the MySQL database server.
+
 We were able to connect to the mysql database remotely, for this we need to know the IP address of the server and the password, without these two requirements we could not connect.
 
 ## ***Closure***. <a name="id5"></a>
