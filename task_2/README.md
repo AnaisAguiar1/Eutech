@@ -569,10 +569,17 @@ After followed all the steps we have the HTTP protocol working and opened with t
 
 ## **TESTING HTTP PROTOCOL**
 
-To prove that our firewall rule it`s working even when we configurated it in a different way we just can use the command ``docker ps``, this command it's going to show us the containers that we have running and the ports that we are using.
+To prove that our firewall rule it`s working even when we configurated it in a different way we just can use the command ``docker ps``, this command it's going to show us the containers that we have running and the ports that we are being used.
 
 ![](img/55.png)
 
+After we checked that the port it's opened we can go to the browser and using the ip of our machine **(192.168.43.242)** nginx it will be owrking using the **port 80.**
+
+```
+192.168.43.424:80
+```
+
+![](img/56.png)
 
 
 ## ***Closure***. <a name="id5"></a>
