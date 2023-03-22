@@ -458,7 +458,7 @@ Windows comes with a built-in firewall that can be used to protect your system f
 
 To activate the Windows Firewall we have to **access the Control Panel** from the Start menu. Then, click on **"System and Security"** and select **"Windows Firewall"** from the options. In the next window, **click on "Turn Windows Firewall on or off"**. After that, check the box for **"Turn on Windows Firewall"** for each network option and click "OK". This will enable the Windows Firewall for your system and help prevent unauthorized access or harmful activity.
 
-![](img/28.gif)
+<img align="center">![](img/28.gif)</img>
 
 Now that we have the firewall active and working we can start crating rules on it.
 
