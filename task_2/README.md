@@ -98,7 +98,7 @@ Then we aregoing to work with the same firewall rules but in windows.
 
 <br>
 
-<h1 align="center">UBUNTU. <a name="id4.1"></a><h1>
+<h1 align="center">UBUNTU. <a name="id4.1"></a></h1>
 
 <br>
 
