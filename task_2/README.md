@@ -446,12 +446,8 @@ We were able to connect to the mysql database remotely, for this **we need to kn
 <br>
 
 ---
-<center>
-
 ## ***<h1 align="center">WINDOWS. <a name="id4.2"></a><h1>***
-
 ---
-</center>
 
 In this part we are going to create and configurate the same firewall rules than we made in ubuntu but in Windows.
 
