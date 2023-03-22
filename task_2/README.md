@@ -16,6 +16,8 @@
 + [Requirements](#id2)
 + [Used tools](#id3)
 + [Development](#id4)
+    + [Linux](#id4.1)
+    + [Windows](#id4.2)
 + [Closure](#id5)
 
 <center>
@@ -25,7 +27,7 @@
 </center>
 <br>
 
-UFW stands for "Uncomplicated Firewall" and is a firewall tool integrated in Ubuntu that allows you to easily configure firewall rules to protect your system against unauthorized connections from the network.
+In this guide, we will walk you through the process of installing and configuring a firewall on both Windows and Linux operating systems. We will cover the basic concepts of firewall security, the different types of firewalls available, and the step-by-step process for installing and configuring a firewall on both operating systems. By the end of this guide, you will have a solid understanding of how to install and configure a firewall to secure your system and protect it from cyber threats.
 
 UFW allows for a wide range of firewall configurations, including the ability to allow or block incoming and outgoing traffic based on source and destination IP addresses, ports, and protocols. It also supports advanced configurations such as logging, rate limiting, and connection tracking.
 
@@ -52,10 +54,6 @@ Requirements that you have to include in this proyect are the next ones:
 <br>
 
 * Create firewall rules to allow inbound and outbound traffic for specific ports, protocols, and IP addresses.
-
-(habilitar reglas: puerto 22 ssh, puerto 80 http, puerto 443 https, puerto 25 smtp)
-
-https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands
 
 <br>
 
@@ -90,13 +88,18 @@ We will use two differents Virtual Machines
 
 </center>
 
+We started with all the firewall installation and configuration of Linux, in this case we used an Ubuntu machine to create all the rules that we wanted to allow or deny inbound and outbound traffic for specific ports, protocols, and IP addresses.
+
+We worked with SSH, HTTP, HTTPS and Mysql protocols.
+
+Then we aregoing to work with the same firewall rules but in windows.
+
 <br>
 
 ----------------------------
 <center>
 
-## ***UBUNTU.***
-
+## ***UBUNTU.*** <a name="id4.1"></a>
 -------------------------------------------------------------------
 
 </center>
@@ -115,19 +118,20 @@ sudo ufw enable ----> To start it.
 <center>
 
 ![](img/04.png)
-
 </center>
 
 After we have the ufw enable and running we can see wich rules we have configurated using the command ``ufw status``, this command it's going to show us all the rules that we have configurated. In this case it's empty because we have no rules created.
 
+<center>
+
 ![](img/03.png)
+</center>
 
 We needed to now our IP address, so we also use the command ``ip a``, we are goind to need it later.
 
 <center>
 
 ![](img/02.png)
-
 </center>
 
 <center>
@@ -138,7 +142,9 @@ We needed to now our IP address, so we also use the command ``ip a``, we are goi
 
 <br>
 
-Now that we have the UFW enable and without any rules allow we can start to create them. 
+Now that we have the UFW enable and without any rules allow we can start to create them.
+
+ We are going to **allow one specific ip and deny a complete network** for the SSH protocol, **Deny the HTTP protocol** and **allow the HTTPS protocol** because it's more secure than the HTTP, and last but nor less important, we are going to **allow the MySQL protocol**, so we can connect remotly to our database.
 
 <br>
 
@@ -395,8 +401,6 @@ We can see below that the connectioin it's not complete secure, this it's becaus
 
 <br>
 
-
-
 ## **- Protocol MySQL:**
 <br>
 
@@ -414,7 +418,6 @@ To allow this protocol we applied the command ``sudo ufw allow mysql`` and we ch
 
 ![](img/26.png)
 </center>
-
 
 <br>
 
@@ -445,13 +448,25 @@ We were able to connect to the mysql database remotely, for this **we need to kn
 ----------------------------
 <center>
 
-## ***WINDOWS.***
-
+## ***WINDOWS.*** <a name="id4.2"></a>
 -------------------------------------------------------------------
-
 </center>
 
-In this part we are goin to create and configurate the same firewall rules than we made in ubuntu but in Windows.
+In this part we are going to create and configurate the same firewall rules than we made in ubuntu but in Windows.
+
+## **Firewall installation and configuration.**
+
+Windows comes with a built-in firewall that can be used to protect your system from online attacks, so in the case of windows we don't have to install the firewall from scratch, we simply have to activate it.
+
+To activate the Windows Firewall we have to **access the Control Panel** from the Start menu. Then, click on **"System and Security"** and select **"Windows Firewall"** from the options. In the next window, **click on "Turn Windows Firewall on or off"**. After that, check the box for **"Turn on Windows Firewall"** for each network option and click "OK". This will enable the Windows Firewall for your system and help prevent unauthorized access or harmful activity.
+
+![](img/28.gif)
+
+Now that we have the firewall active and working we can start crating rules on it.
+
+## **Creation of firewall rules.**
+
+## **Test that the applied firewall rules are working correctly.**
 
 
 
