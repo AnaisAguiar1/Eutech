@@ -76,19 +76,24 @@ Requirements that you have to include in this proyect are the next ones:
 
 We will use two differents Virtual Machines
 
-|   MV  |      OS      |     Version     |   IP   |   ROL  |
-|-------|--------------|-----------------|--------|--------|
-|   1   | Windows 2010 | Enterprice 2016 |        | Cliente|
-|   2   |    Ubuntu    |   Ubuntu 20.04  |        | Cliente|
+|   MV  |      OS      |     Version     |         IP      |   ROL   |
+|-------|--------------|-----------------|-----------------|---------|
+|   1   | Windows 2010 | Enterprice 2016 |  192.168.43.19  | Cliente |
+|   2   |    Ubuntu    |   Ubuntu 20.04  |  192.168.43.193 | Cliente |
+
+<br>
 
 ### ***Development.*** <a name="id4"></a>
 
 <center>
 
+<br>
 
 ## ***Install and configure a firewall on both Windows and Linux operating systems.***
 
 </center>
+
+<br>
 
 We started with all the firewall installation and configuration of Linux, in this case we used an Ubuntu machine to create all the rules that we wanted to allow or deny inbound and outbound traffic for specific ports, protocols, and IP addresses.
 
@@ -458,7 +463,14 @@ To activate the Windows Firewall we have to **access the Control Panel** from th
 Now that we have the firewall active and working we can start crating rules on it.
 
 ## **Creation of firewall rules.**
+<br>
 
+
+
+**- SSH PROTOCOL**
+
+
+<br>
 ## **Test that the applied firewall rules are working correctly.**
 
 
