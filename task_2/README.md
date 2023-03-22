@@ -22,7 +22,7 @@
 
 <center>
 
-## ***Description***. <a name="id1"></a><h1>
+## ***Description***. <a name="id1"></a>
 
 </center>
 
@@ -65,15 +65,13 @@ Requirements that you have to include in this proyect are the next ones:
 * Create a report detailing the configuration and implementation of the firewall rules.
 
 <br>
-
 <h1 align="center">
 <center>
 
 ## ***Used tools.*** <a name="id3"></a>
 
 </center>
-<h1>
-
+</h1>
 
 We will use two differents Virtual Machines
 
