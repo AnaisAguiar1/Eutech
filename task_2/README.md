@@ -448,7 +448,7 @@ We were able to connect to the mysql database remotely, for this **we need to kn
 ----------------------------
 <center>
 
-## ***WINDOWS.*** <a name="id4.2"></a>
+<h1 align="center"> ## ***WINDOWS.*** <a name="id4.2"></a><h1>
 -------------------------------------------------------------------
 </center>
 
