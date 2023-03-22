@@ -92,9 +92,12 @@ We will use two differents Virtual Machines
 
 <br>
 
+----------------------------
 <center>
 
 ## ***UBUNTU.***
+
+-------------------------------------------------------------------
 
 </center>
 
@@ -139,7 +142,7 @@ Now that we have the UFW enable and without any rules allow we can start to crea
 
 <br>
 
-## **Protocol SSH:**
+## **- Protocol SSH:**
 
 <br>
 
@@ -180,7 +183,11 @@ So now, only the machine with that ip can make a ssh conection with us.
 
 <br>
 
+<center>
+
 ![](img/18.png)
+
+</center>
 <br>
 
 If we want to reject or deny the ssh conection we add the next rule ``"ufw deny from 192.168.43.0/24 to any port 22 proto tcp"``, with this command we will be rejecting all the specified network (192.168.43.0/24), except for the one that we accepted before (192.168.43.19), so we can be able to conect by ssh with the server.
@@ -189,7 +196,11 @@ Checked that the rules were apllied correctly using the command ``"ufw status nu
 
 <br>
 
+<center>
+
 ![](img/19.png)
+</center>
+
 <br>
 
 <center>
@@ -200,7 +211,7 @@ Checked that the rules were apllied correctly using the command ``"ufw status nu
 
 <br>
 
-## **TESTING SSH PROTOCOL**
+## **- TESTING SSH PROTOCOL**
 
 Now you can see that the rules about the **SSH Protocol** are working.
 
@@ -210,7 +221,10 @@ To test if the rule ait`s working, the machine with the ip allow to ssh, in this
 
 <br>
 
+<center>
+
 ![](img/15.png)
+</center>
 
 <br>
 
@@ -218,7 +232,10 @@ Insert the ip address of the machine that we want to connect with, in this case 
 
 <br>
 
+<center>
+
 ![](img/16.png) 
+</center>
 
 <br>
 
@@ -228,7 +245,10 @@ In the image below you can see that we are connected to the **server** wich use 
 
 <br>
 
+<center>
+
 ![](img/17.png)
+</center>
 
 <br>
 
@@ -238,13 +258,14 @@ Below you will see an example. We tried to connect with an ubuntu machine using 
 
 <br>
 
+<center>
+
 ![](img/20.png)
+</center>
 
 <br>
 
-<br>
-
-## **Protocol HTTP:**
+## **- Protocol HTTP:**
 
 <br>
 
@@ -265,12 +286,16 @@ sudo ufw status numbered
 
 <br>
 
+<center>
+
 ![](img/21.png)
+</center>
+
 <br>
 
 After having the HTTP rule denied, we have to look for the entry for **"Apache"** and make sure that we have not access. In case you want to allow the http protocol in your sever, you can enable it with the following command: ``sudo ufw allow http`` 
 
-## **TESTING HTTP PROTOCOL**
+## **- TESTING HTTP PROTOCOL**
 
 <br>
 
@@ -316,7 +341,7 @@ With this we proved that our firewall rules created are working correctly.
 
 <br>
 
-## **Protocol HTTPS:**
+## **- Protocol HTTPS:**
 
 <br>
 
@@ -338,14 +363,18 @@ Once we created the rule for protocol HHTPS using the port 443 we can check it u
 
 <br>
 
+<center>
+
 ![](img/24.png)
+</center>
+
 <br>
 
 With this rule working we can use the browser in a more secure way and create web domains more secures than with the HTTP protocol.
 
 <br>
 
-## **TESTING HTTPS PROTOCOL**
+## **- TESTING HTTPS PROTOCOL**
 
 <br>
 
@@ -359,17 +388,21 @@ We can see below that the connectioin it's not complete secure, this it's becaus
 
 <br>
 
+<center>
+
 ![](img/25.png)
-<br>
+</center>
 
 <br>
 
-## **Protocol MySQL:**
+
+
+## **- Protocol MySQL:**
 <br>
 
 Enabling **port 3306** in UFW (Uncomplicated Firewall) in Ubuntu will let us allow incoming connections to a **MySQL database** server on that port.
 
-Port 3306 is the default port used by MySQL to accept incoming network connections, and if this port is not open in the firewall, external clients will not be able to connect to the MySQL database server.
+**Port 3306 is the default port used by MySQL** to accept incoming network connections, and if this port is not open in the firewall, external clients will not be able to connect to the MySQL database server.
 
 With this protocol we can allow the remote access to our database of MySQL, so it's easier to connect and modify it for externals clients.
 
@@ -377,8 +410,11 @@ To allow this protocol we applied the command ``sudo ufw allow mysql`` and we ch
 
 <br>
 
+<center>
+
 ![](img/26.png)
-<br>
+</center>
+
 
 <br>
 
@@ -393,12 +429,33 @@ mysql -u anais -p -h 192.168.43.193
 
 <br>
 
+<center>
+
 ![](img/27.png)
+</center>
+
 <br>
 
-Once port 3306 has been enabled on the UFW, external clients should be able to connect to the MySQL database server on that port. It is important to note that by allowing traffic on a port, you are opening the door to potential security threats, so it is important to ensure that other appropriate security measures are in place to protect the MySQL database server.
+**Once port 3306 has been enabled on the UFW, external clients should be able to connect to the MySQL database server on that port**. It is important to note that by allowing traffic on a port, you are opening the door to potential security threats, so it is important to ensure that other appropriate security measures are in place to protect the MySQL database server.
 
-We were able to connect to the mysql database remotely, for this we need to know the IP address of the server and the password, without these two requirements we could not connect.
+We were able to connect to the mysql database remotely, for this **we need to know the IP address of the server and the password**, without these two requirements we could not connect.
+
+<br>
+
+----------------------------
+<center>
+
+## ***WINDOWS.***
+
+-------------------------------------------------------------------
+
+</center>
+
+In this part we are goin to create and configurate the same firewall rules than we made in ubuntu but in Windows.
+
+
+
+<br>
 
 ## ***Closure***. <a name="id5"></a>
 
