@@ -22,7 +22,7 @@
 
 <center>
 
-## ***Description***. <a name="id1"></a>
+## ***Description***. <a name="id1"></a><h1>
 
 </center>
 <br>
@@ -65,12 +65,14 @@ Requirements that you have to include in this proyect are the next ones:
 
 <br>
 
-
+<h1 align="center">
 <center>
 
 ## ***Used tools.*** <a name="id3"></a>
 
 </center>
+<h1>
+
 
 We will use two differents Virtual Machines
 
@@ -99,8 +101,8 @@ Then we aregoing to work with the same firewall rules but in windows.
 ----------------------------
 <center>
 
-## ***UBUNTU.*** <a name="id4.1"></a>
--------------------------------------------------------------------
+<h1 align="center">UBUNTU. <a name="id4.1"></a><h1>
+
 
 </center>
 
@@ -446,8 +448,7 @@ We were able to connect to the mysql database remotely, for this **we need to kn
 <br>
 
 ---
-<h1 align="center">WINDOWS. <a name="id4.2"></a></h1>
----
+<h1 align="center">WINDOWS. <a name="id4.2"></a><h1>
 
 In this part we are going to create and configurate the same firewall rules than we made in ubuntu but in Windows.
 
