@@ -483,9 +483,24 @@ To allow and create rule with the Windows Firewall we just have to click on:
 
 ![](img/34.gif)
 
-With the rule created we can try the connection to check if the rule it's actually working correctly, creating just the inbound rules we are going to be ables to connect through ssh from our windows machine to any other machine knowing the ip address, the user and the password.
+Another and easier way to install OpenSSH in Windows it's by graphical environment, below you can see how to install it, using this option, windows open the 22 port automatically, so we don't have to configurate and create the rule ourself.
 
-As we just create an inbound rule and not an outbound rule, we will not be able to connect through ssh from aany machine to our windows machine, even having the SSH intalled. 
+To install OpenSSH by this option we used a Windows 10 machine.
+
+![](img/35.gif)
+
+Once we have it installed we have to active the SSH service using the services options of windows, after actived it we can check it if it's active using the commmand ``Get-Service -Name *ssh*``
+
+![](img/51.png)
+
+
+> **NOTE:** In that you as server want just allow the connection from your machine to another ones you must have to install the **clientSSH* *and in case you only want to allow others to connect to your machine but you cannot connect to other machines you should install only **ServerSSH.** 
+
+> In our case we installed both because we wanted to allow both connections.
+
+We can also check if we have the port opened using the command ``netstat -bano | more``
+
+![](img/38.png)
 
 <br>
 
@@ -494,13 +509,71 @@ As we just create an inbound rule and not an outbound rule, we will not be able 
 
 ## **TESTING SSH PROTOCOL**
 
-Or machine it's using the ip address 192.168.176.154, now we are going to try the connection from another machine to this one using the command ``ssh user@ip-server``
+Or machine it's using the ip address 192.168.43.242, now we are going to try the connection from another machine to this one using the command ``ssh user@ip-server``
+
+With the rule created we can try the connection to check if the rule it's actually working correctly, our machine it's using the ip address **192.168.43.242,** now we are ables to connect through ssh from our windows machine to any other machine knowing the ip address, the user and the password.
+
+This time we connected to another Windows machine using SSH, to connect we used the command ``ssh user@ip-address``
 
 ```
-ssh anais@192.168.176.154
+ssh cristian@192.168.43.236
 ```
+
+![](img/39.gif)
+
+And here we tried to connect from another Windows machine to our machine using the same command we used before.
+
+```
+ssh anais@192.168.43.242
+```
+
+![](img/40.gif)
+
+With this we proved that the ssh protocol it's working in our windows firewall.
 
 <br>
+
+**- HTTP PROTOCOL**
+
+To allow the HTTP protocol this time we used another option to enable the port 80 wich is the port that use the HTTP protol, to configurate the firewall using this option we have to configurate the docker file first using the next lines:
+
+```dockerfile
+FROM nginx
+EXPOSE 80
+```
+It will look like this:
+
+![](img/52.png)
+
+Once we have the docker file configurated we have to create a script to generate the respective container of nginx.
+
+![](img/53.png)
+
+```ps1
+docker build -t anais/nginx . # To create the image from our docker file, the ended point at the end it's indespensable 
+docker run -d -p 80:80 anais/nginx  # To generate a container of the image created using the port 80:80
+```
+
+Now we have to execute the ```main.ps1`` script.
+
+![](img/54.png)
+
+Docker enable the ports automatically for a short time, so we only need to active the port in the firewall if we configurated the rule in the clasic way.
+
+After followed all the steps we have the HTTP protocol working and opened with the port 80.
+
+> NOTE: In case of configurate the rule in the classic way, we have to active the port 80 using the firewall configurations.
+
+## **Test that the applied firewall rules are working correctly.**
+<br>
+
+## **TESTING HTTP PROTOCOL**
+
+To prove that our firewall rule it`s working even when we configurated it in a different way we just can use the command ``docker ps``, this command it's going to show us the containers that we have running and the ports that we are using.
+
+![](img/55.png)
+
+
 
 ## ***Closure***. <a name="id5"></a>
 
