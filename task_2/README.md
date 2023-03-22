@@ -435,7 +435,7 @@ mysql -u anais -p -h 192.168.43.193
 
 <center>
 
-<img align="center">![](img/27.png)</img>
+![](img/27.png)
 </center>
 
 <br>
@@ -458,22 +458,45 @@ Windows comes with a built-in firewall that can be used to protect your system f
 
 To activate the Windows Firewall we have to **access the Control Panel** from the Start menu. Then, click on **"System and Security"** and select **"Windows Firewall"** from the options. In the next window, **click on "Turn Windows Firewall on or off"**. After that, check the box for **"Turn on Windows Firewall"** for each network option and click "OK". This will enable the Windows Firewall for your system and help prevent unauthorized access or harmful activity.
 
-<img align="center">![](img/28.gif)</img>
+![](img/28.gif)
 
 Now that we have the firewall active and working we can start crating rules on it.
 
 ## **Creation of firewall rules.**
 <br>
 
-
-
 **- SSH PROTOCOL**
 
+First of all we have to check if we have the SSH intalled, if we don't have we can install it using the command ``winget install Microsoft.OpenSSH.Beta``
+
+Now we can start to create the rule.
+
+To allow and create rule with the Windows Firewall we just have to click on:
+
+1) **"Advanced settings"** in the left sidebar 
+
+2) Then Select **"Inbound Rules"**. 
+
+3) After, click on "New Rule" in the right sidebar, and follow the prompts to select **"Port"**, choose **"TCP"** as the protocol type, and enter **"22"** as the port number. 
+
+4) Select **"Allow the connection"** and **all profile options**, and then give a name to the new rule, we called it "conexion SSH", then, just have to click **"Finish"** to complete the process. With these steps, we are already allows to use the SSH connection through the Winodws firewall.
+
+![](img/34.gif)
+
+With the rule created we can try the connection to check if the rule it's actually working correctly.
 
 <br>
+
 ## **Test that the applied firewall rules are working correctly.**
+<br>
 
+## **TESTING SSH PROTOCOL**
 
+Our machine it's using the ip address 192.168.43.20, now we are going to try the connection from another machine to this one using the command ``ssh user@ip-server``
+
+```
+ssh anais@192.168.43.20
+```
 
 <br>
 
