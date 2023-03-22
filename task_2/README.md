@@ -460,7 +460,7 @@ To activate the Windows Firewall we have to **access the Control Panel** from th
 
 ![](img/28.gif)
 
-Now that we have the firewall active and working we can start crating rules on it.
+Now that we have the firewall active and working we can start create rules on it.
 
 ## **Creation of firewall rules.**
 <br>
@@ -483,7 +483,9 @@ To allow and create rule with the Windows Firewall we just have to click on:
 
 ![](img/34.gif)
 
-With the rule created we can try the connection to check if the rule it's actually working correctly.
+With the rule created we can try the connection to check if the rule it's actually working correctly, creating just the inbound rules we are going to be ables to connect through ssh from our windows machine to any other machine knowing the ip address, the user and the password.
+
+As we just create an inbound rule and not an outbound rule, we will not be able to connect through ssh from aany machine to our windows machine, even having the SSH intalled. 
 
 <br>
 
@@ -492,10 +494,10 @@ With the rule created we can try the connection to check if the rule it's actual
 
 ## **TESTING SSH PROTOCOL**
 
-Our machine it's using the ip address 192.168.43.20, now we are going to try the connection from another machine to this one using the command ``ssh user@ip-server``
+Or machine it's using the ip address 192.168.176.154, now we are going to try the connection from another machine to this one using the command ``ssh user@ip-server``
 
 ```
-ssh anais@192.168.43.20
+ssh anais@192.168.176.154
 ```
 
 <br>
