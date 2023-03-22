@@ -25,6 +25,7 @@
 ## ***Description***. <a name="id1"></a><h1>
 
 </center>
+
 <br>
 
 In this guide, we will walk you through the process of installing and configuring a firewall on both Windows and Linux operating systems. We will cover the basic concepts of firewall security, the different types of firewalls available, and the step-by-step process for installing and configuring a firewall on both operating systems. By the end of this guide, you will have a solid understanding of how to install and configure a firewall to secure your system and protect it from cyber threats.
