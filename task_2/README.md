@@ -435,7 +435,7 @@ mysql -u anais -p -h 192.168.43.193
 
 <center>
 
-![](img/27.png)
+<img align="center">![](img/27.png)</img>
 </center>
 
 <br>
