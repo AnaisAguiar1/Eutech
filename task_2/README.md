@@ -545,7 +545,7 @@ It will look like this:
 
 ![](img/52.png)
 
-Once we have the docker file configurated we have to create a script to generate the respective container of nginx.
+Once we have the docker file configurated we have to create a script to generate the respective container in nginx.
 
 ![](img/53.png)
 
