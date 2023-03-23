@@ -600,6 +600,16 @@ Even tho, to configurate this rule and open the port we just have to create a ne
 
 ![](img/60.gif)
 
+if we had the ssl certificate we could check its operation, thus having a more secure connection, in case of having the certificate, to check its operation we would simply have to go to the browser and with the **ip of the server** where the rule was created followed by the port or using the **"https://"** followed by the ip, we would already have the connection. 
+
+Examples below:
+
+```
+ip-server:443
+
+https://ip-server
+```
+
 ## ***Closure***. <a name="id5"></a>
 
 </center>
