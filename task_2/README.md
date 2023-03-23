@@ -217,8 +217,6 @@ Checked that the rules were apllied correctly using the command ``"ufw status nu
 
 </center>
 
-<br>
-
 ## **- TESTING SSH PROTOCOL**
 
 Now you can see that the rules about the **SSH Protocol** are working.
@@ -303,6 +301,8 @@ sudo ufw status numbered
 
 After having the HTTP rule denied, we have to look for the entry for **"Apache"** and make sure that we have not access. In case you want to allow the http protocol in your sever, you can enable it with the following command: ``sudo ufw allow http`` 
 
+## **Test that the applied firewall rules are working correctly.**
+
 ## **- TESTING HTTP PROTOCOL**
 
 <br>
@@ -382,6 +382,8 @@ With this rule working we can use the browser in a more secure way and create we
 
 <br>
 
+## **Test that the applied firewall rules are working correctly.**
+
 ## **- TESTING HTTPS PROTOCOL**
 
 <br>
@@ -422,6 +424,8 @@ To allow this protocol we applied the command ``sudo ufw allow mysql`` and we ch
 </center>
 
 <br>
+
+## **Test that the applied firewall rules are working correctly.**
 
 ## **TESTING MySQL PROTOCOL**
 <br>
