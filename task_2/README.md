@@ -314,14 +314,14 @@ To verify that the rule was applied correctly we have a couples of options:
 http://192.168.43.193:80/
 ```
 
-In the image below you can see the connection was rejected, so the firewall rule it's working.
+In the image below you can see the connection was rejected, it never connected, so the firewall rule it's working.
 
 <br>
 
 ![](img/22.png)
 <br>
 
-On this other imagen we tried to use the service from the server, so we can see that the apache service it's working because it's a local service connection.
+On this other imagen we tried to use the service from the server, so we can see that the apache service it's working because it's a local service connection, you can see that it's using port 80.
 
 ```
 http://localhost:80/
@@ -450,9 +450,14 @@ We were able to connect to the mysql database remotely, for this **we need to kn
 
 <br>
 
-In this part we are going to create and configurate the same firewall rules than we made in ubuntu but in Windows.
+In the case of windows and it's firewall functions are very different from those of ubuntu as windows is much more automatic, every time you install a program, windows opens the ports it needs to work automatically, which makes the firewall configuration a bit useless, in my opinion with windows and it's firewall, the most convenient is to override ports or specific entries.
+
+In this case we enabled the ssh connection in both directions, and the HTTP protocol.
+
 
 ## **Firewall installation and configuration.**
+
+In this part we are going to create and configurate a couple of firewall rules in Windows.
 
 Windows comes with a built-in firewall that can be used to protect your system from online attacks, so in the case of windows we don't have to install the firewall from scratch, we simply have to activate it.
 
@@ -479,7 +484,7 @@ To allow and create rule with the Windows Firewall we just have to click on:
 
 3) After, click on "New Rule" in the right sidebar, and follow the prompts to select **"Port"**, choose **"TCP"** as the protocol type, and enter **"22"** as the port number. 
 
-4) Select **"Allow the connection"** and **all profile options**, and then give a name to the new rule, we called it "conexion SSH", then, just have to click **"Finish"** to complete the process. With these steps, we are already allows to use the SSH connection through the Winodws firewall.
+4) Select **"Allow the connection"** and **all profile options**, and then give a name to the new rule, we called it **"conexion SSH"**, then, just have to click **"Finish"** to complete the process. With these steps, we are already allows to use the SSH connection through the Winodws firewall.
 
 ![](img/34.gif)
 
@@ -489,27 +494,26 @@ To install OpenSSH by this option we used a Windows 10 machine.
 
 ![](img/35.gif)
 
+![](img/36.png)
+
 Once we have it installed we have to active the SSH service using the services options of windows, after actived it we can check it if it's active using the commmand ``Get-Service -Name *ssh*``
 
 ![](img/51.png)
 
 
-> **NOTE:** In that you as server want just allow the connection from your machine to another ones you must have to install the **clientSSH* *and in case you only want to allow others to connect to your machine but you cannot connect to other machines you should install only **ServerSSH.** 
+> **NOTE:** In case that you as server want just allow the connection from your machine to another ones you must have to install the **clientSSH** and in case you only want to allow others to connect to your machine but you cannot connect to other machines you should install only **ServerSSH.** 
 
 > In our case we installed both because we wanted to allow both connections.
 
-We can also check if we have the port opened using the command ``netstat -bano | more``
+We can also checked if we have the port opened using the command ``netstat -bano | more``
 
 ![](img/38.png)
 
 <br>
 
 ## **Test that the applied firewall rules are working correctly.**
-<br>
 
 ## **TESTING SSH PROTOCOL**
-
-Or machine it's using the ip address 192.168.43.242, now we are going to try the connection from another machine to this one using the command ``ssh user@ip-server``
 
 With the rule created we can try the connection to check if the rule it's actually working correctly, our machine it's using the ip address **192.168.43.242,** now we are ables to connect through ssh from our windows machine to any other machine knowing the ip address, the user and the password.
 
@@ -564,16 +568,18 @@ After followed all the steps we have the HTTP protocol working and opened with t
 
 > NOTE: In case of configurate the rule in the classic way, we have to active the port 80 using the firewall configurations.
 
-## **Test that the applied firewall rules are working correctly.**
 <br>
+
+## **Test that the applied firewall rules are working correctly.**
+
 
 ## **TESTING HTTP PROTOCOL**
 
-To prove that our firewall rule it`s working even when we configurated it in a different way we just can use the command ``docker ps``, this command it's going to show us the containers that we have running and the ports that we are being used.
+To prove that our firewall rule it`s working even when we configurated it in a different way, we can use the command ``docker ps``, this command it's going to show us the containers that we have running and the ports that we are being used.
 
 ![](img/55.png)
 
-After we checked that the port it's opened we can go to the browser and using the ip of our machine **(192.168.43.242)** nginx it will be owrking using the **port 80.**
+After we checked that the port it's opened we can go to the browser and using the ip of our machine **(192.168.43.242)** nginx it will be working using the **port 80.**
 
 ```
 192.168.43.424:80
