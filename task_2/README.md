@@ -4,7 +4,7 @@
 
 </center>
 
-***Author:*** Anais G. Aguiar Contreras.
+***Author:*** Anais G. Aguiar Contreras
 
 ***Company:*** EUtech Assignments.
 
