@@ -594,11 +594,14 @@ After we checked that the port it's opened we can go to the browser and using th
 
 ## **- HTTPS Protocol**
 
+We tried to configurate this rule, but it wasn't working because we are using local machines and we don't have a register domain to generate the SSL certificate, so what we did was enable the port 443 but in our case we can't not check that it's working correctly.
 
+Even tho, to configurate this rule and open the port we just have to create a new inbound rule in our firewall.
+
+![](img/60.gif)
 
 ## ***Closure***. <a name="id5"></a>
 
 </center>
-
 <br>
-
+The Ubuntu and Windows firewalls have similarities in their ability to block unauthorized traffic and control access to system services, but also have notable differences. The Ubuntu firewall is based on iptables and uses rules to filter network traffic, while the Windows firewall uses the Windows Firewall with Advanced Security and has a more user-friendly GUI. Windows firewall is enabled by default in all versions, while Ubuntu firewall may not be enabled by default. Configuring the Windows firewall may be easier for less experienced users due to its intuitive GUI, while the Ubuntu firewall may be more complex due to its rule-based configuration. Both firewalls are effective in protecting against external threats, and the choice between them depends on the specific needs and skills of the system administrator.
