@@ -76,10 +76,11 @@ Requirements that you have to include in this proyect are the next ones:
 
 We will use two differents Virtual Machines
 
-|   MV  |      OS      |     Version     |         IP      |   ROL   |
-|-------|--------------|-----------------|-----------------|---------|
-|   1   | Windows 2010 | Enterprice 2016 |  192.168.43.19  | Cliente |
-|   2   |    Ubuntu    |   Ubuntu 20.04  |  192.168.43.193 | Cliente |
+|   MV  |      OS      |     Version     |         IP       |   ROL   |
+|-------|--------------|-----------------|------------------|---------|
+|   1   |  Windows 10  | Enterprice 2016 |  192.168.43.19   | Cliente |
+|   2   |    Ubuntu    |   Ubuntu 20.04  |  192.168.43.193  | Cliente |
+|   3   |  Windows 10  | Windows 10 Home |  192.168.43.242  | Cliente |
 
 <br>
 
