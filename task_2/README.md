@@ -522,7 +522,7 @@ We can also checked if we have the port opened using the command ``netstat -bano
 
 With the rule created we can try the connection to check if the rule it's actually working correctly, our machine it's using the ip address **192.168.43.242,** now we are ables to connect through ssh from our windows machine to any other machine knowing the ip address, the user and the password.
 
-This time we connected to another Windows machine using SSH, to connect we used the command ``ssh user@ip-address``
+This time we connected **from our machine to another Windows machine** using SSH, to connect we used the command ``ssh user@ip-address``
 
 ```
 ssh cristian@192.168.43.236
@@ -530,7 +530,7 @@ ssh cristian@192.168.43.236
 
 ![](img/39.gif)
 
-And here we tried to connect from another Windows machine to our machine using the same command we used before.
+And here we tried to connect **from another Windows machine to our machine** using the same command we used before.
 
 ```
 ssh anais@192.168.43.242
@@ -544,7 +544,7 @@ With this we proved that the ssh protocol it's working in our windows firewall.
 
 **- HTTP PROTOCOL**
 
-To allow the HTTP protocol this time we used another option to enable the port 80 wich is the port that use the HTTP protol, to configurate the firewall using this option we have to configurate the docker file first using the next lines:
+To allow the HTTP protocol this time we used another option to enable the **port 80** wich is the port that use the **HTTP protol**, to configurate the firewall using this option we have to **configurate the docker file** first using the next lines:
 
 ```dockerfile
 FROM nginx
@@ -567,7 +567,7 @@ Now we have to execute the ```main.ps1`` script.
 
 ![](img/54.png)
 
-Docker enable the ports automatically for a short time, so we only need to active the port in the firewall if we configurated the rule in the clasic way.
+**Docker enable the ports automatically** for a short time, so we only need to active the port in the firewall if we configurated the rule in the clasic way.
 
 After followed all the steps we have the HTTP protocol working and opened with the port 80.
 
@@ -594,7 +594,7 @@ After we checked that the port it's opened we can go to the browser and using th
 
 ## **- HTTPS Protocol**
 
-We tried to configurate this rule, but it wasn't working because we are using local machines and we don't have a register domain to generate the SSL certificate, so what we did was enable the port 443 but in our case we can't not check that it's working correctly.
+We tried to configurate this rule, but it wasn't working because we are using local machines and we don't have a register domain to generate the **SSL certificate**, so what we did was enable the **port 443** but in our case we can't not check if it's working correctly.
 
 Even tho, to configurate this rule and open the port we just have to create a new inbound rule in our firewall.
 
@@ -603,5 +603,7 @@ Even tho, to configurate this rule and open the port we just have to create a ne
 ## ***Closure***. <a name="id5"></a>
 
 </center>
+
 <br>
-The Ubuntu and Windows firewalls have similarities in their ability to block unauthorized traffic and control access to system services, but also have notable differences. The Ubuntu firewall is based on iptables and uses rules to filter network traffic, while the Windows firewall uses the Windows Firewall with Advanced Security and has a more user-friendly GUI. Windows firewall is enabled by default in all versions, while Ubuntu firewall may not be enabled by default. Configuring the Windows firewall may be easier for less experienced users due to its intuitive GUI, while the Ubuntu firewall may be more complex due to its rule-based configuration. Both firewalls are effective in protecting against external threats, and the choice between them depends on the specific needs and skills of the system administrator.
+
+The Ubuntu and Windows firewalls have similarities in their ability to **block unauthorized traffic** and **control access to system services**, but also have notable differences. The Ubuntu firewall is based on iptables and uses rules to filter network traffic, while the Windows firewall uses the **Windows Firewall with Advanced Security and has a more user-friendly GUI**. Windows firewall is enabled by default in all versions, while **Ubuntu firewall may not be enabled by default**. Configuring the Windows firewall may be easier for less experienced users due to its intuitive GUI, while the Ubuntu firewall may be more complex due to its rule-based configuration. Both firewalls are effective in protecting against external threats, and the choice between them depends on the specific needs and skills of the system administrator.
