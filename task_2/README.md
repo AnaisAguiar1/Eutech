@@ -32,7 +32,7 @@ In this guide, we will walk you through the process of installing and configurin
 
 UFW allows for a wide range of firewall configurations, including the ability to allow or block incoming and outgoing traffic based on source and destination IP addresses, ports, and protocols. It also supports advanced configurations such as logging, rate limiting, and connection tracking.
 
-To this proyect we have been hired as a Network Security Engineer for a small company. The company has a network infrastructure consisting of multiple devices, including servers, switches, and routers. Your task is to configure and implement firewall rules to secure the network infrastructure.
+To this project, we have been hired as Network Security Engineers for a small company. The company has a network infrastructure consisting of multiple devices, including servers, switches, and routers. Your task is to configure and implement firewall rules to secure the network infrastructure.
 
 <br>
 
@@ -96,11 +96,11 @@ We will use two differents Virtual Machines
 
 <br>
 
-We started with all the firewall installation and configuration of Linux, in this case we used an Ubuntu machine to create all the rules that we wanted to allow or deny inbound and outbound traffic for specific ports, protocols, and IP addresses.
+We started with all the firewall installations and configurations of Linux, in this case we used an Ubuntu machine to create all the rules that we wanted to allow or deny inbound and outbound traffic for specific ports, protocols, and IP addresses.
 
 We worked with SSH, HTTP, HTTPS and Mysql protocols.
 
-Then we aregoing to work with the same firewall rules but in windows.
+Then we worked with the same firewall rules but in windows.
 
 <br>
 
@@ -108,7 +108,7 @@ Then we aregoing to work with the same firewall rules but in windows.
 
 <br>
 
-We are going to start with Linux. First of all we check that the ufw is installed and running, if it is not we can install it using the command ``"sudo apt-get install ufw"``, in our case we had it installed, we use the command ``"ufw status"`` to check if it was runnig, in case the ufw it's installed but not runnig we can start it with the command `"ufw enable"`.
+We first started with Linux. First of all we checked that the ufw was installed and running, if it is not we can install it using the command ``"sudo apt-get install ufw"``, in our case it was already installed. We used the command ``"ufw status"`` to check if it was running, in case the ufw is installed but not running, we can start it with the command `"ufw enable"`.
 
 ```
 sudo apt-get install ufw ----> To Install.
@@ -122,14 +122,14 @@ sudo ufw enable ----> To start it.
 ![](img/04.png)
 </center>
 
-After we have the ufw enable and running we can see wich rules we have configurated using the command ``ufw status``, this command it's going to show us all the rules that we have configurated. In this case it's empty because we have no rules created.
+After we had the ufw enabled and running, we checked to see wich rules we have configurated using the command ``ufw status``, this command is going to show us all the rules that we have configurated. In this case it's empty because we have no rules created.
 
 <center>
 
 ![](img/03.png)
 </center>
 
-We needed to now our IP address, so we also use the command ``ip a``, we are goind to need it later.
+We needed to know our IP address, so we also used the command ``ip a``, because we are going to need it later.
 
 <center>
 
@@ -144,9 +144,9 @@ We needed to now our IP address, so we also use the command ``ip a``, we are goi
 
 <br>
 
-Now that we have the UFW enable and without any rules allow we can start to create them.
+Now that we have the UFW enabled and without any rules allowed, we can start to create them.
 
- We are going to **allow one specific ip and deny a complete network** for the SSH protocol, **Deny the HTTP protocol** and **allow the HTTPS protocol** because it's more secure than the HTTP, and last but nor less important, we are going to **allow the MySQL protocol**, so we can connect remotly to our database.
+ We are going to **allow one specific ip and deny a complete network** for the SSH protocol, **Deny the HTTP protocol** and **allow the HTTPS protocol** because it's more secure than the HTTP, and last but not less important, we are going to **allow the MySQL protocol**, so we can connect remotly to our database.
 
 <br>
 
@@ -158,7 +158,7 @@ Now that we have the UFW enable and without any rules allow we can start to crea
 
 To establish an SSH connection, it is necessary to have SSH client software installed on the local machine and enable the SSH service on the remote server. Then, a SSH client such as **PuTTY (on Windows)** or SSH command line (on Linux and macOS) can be used to connect to the remote server and access its resources.
 
-The first rule it's going to be the ``"SSH"`` conexion by port 22, UFW we use the command ``"ufw allow ssh"``, with this line the rule will be allow and it will start to work inmediatly.
+The first rule is going to be the ``"SSH"`` connection by port 22, UFW so we use the command ``"ufw allow ssh"``. With this line the rule will be applied and it will start to work inmediatly.
 
 <center>
 
@@ -170,7 +170,7 @@ The first rule it's going to be the ``"SSH"`` conexion by port 22, UFW we use th
 
 </center>
 
-We used the command ``"ufw status numbered"`` so, now we can see the rule runnig and applied, till this momment we only have this rule in our firewall.
+We used the command ``"ufw status numbered"`` , so now we can see the rule running and applied. Till this momment, we only have this rule in our firewall.
 
 We can connect by **ssh** from another computer to this one using **ssh**.
 
@@ -184,10 +184,10 @@ We can connect by **ssh** from another computer to this one using **ssh**.
 
 </center>
 
-We can also deny or allow the ssh conection to an specific ip address or to an ip range in case you don't want someone in specific conecting to your computer or in case you only want to accept connection ssh just with one computer.
+We can also deny or allow the "ssh" connection to a specific ip address or to an ip range in case you don't want someone in specific connecting to your computer or in case you only want to accept connection "ssh" just with one computer.
 
-To allow just one specific ip address we create this rule, we used the command ``"sudo ufw allow from 192.168.43.19 proto tcp to any port 22"``.
-So now, only the machine with that ip can make a ssh conection with us.
+To allow just one specific ip address we created this rule, we used the command ``"sudo ufw allow from 192.168.43.19 proto tcp to any port 22"``.
+So now, only the machine with that ip can make a ssh connection with us.
 
 <br>
 
@@ -198,9 +198,9 @@ So now, only the machine with that ip can make a ssh conection with us.
 </center>
 <br>
 
-If we want to reject or deny the ssh conection we add the next rule ``"ufw deny from 192.168.43.0/24 to any port 22 proto tcp"``, with this command we will be rejecting all the specified network (192.168.43.0/24), except for the one that we accepted before (192.168.43.19), so we can be able to conect by ssh with the server.
+If we wanted to reject or deny the ssh connection, we added the next rule ``"ufw deny from 192.168.43.0/24 to any port 22 proto tcp"``, with this command we will be rejecting all the specified network (192.168.43.0/24), except for the one that we accepted before (192.168.43.19), so we can connect by ssh with the server.
 
-Checked that the rules were apllied correctly using the command ``"ufw status numbered"``, we will see our rules running, so, now we can test them.
+We checked that the rules were apllied correctly using the command ``"ufw status numbered"``, we wanted to see our rules running, so that we can test them.
 
 <br>
 
@@ -219,11 +219,11 @@ Checked that the rules were apllied correctly using the command ``"ufw status nu
 
 ## **- TESTING SSH PROTOCOL**
 
-Now you can see that the rules about the **SSH Protocol** are working.
+Now you can see that the rules of the **SSH Protocol** are working.
 
-Only the machine with the ip address **192.168.43.19** can conect by ssh with our ubuntu machine, and the rest of machines with any ip address are going to be rejected.
+Only the machine with the ip address **192.168.43.19** can conect by ssh with our ubuntu machine, and the rest of the machines with any other ip address are going to be rejected.
 
-To test if the rule ait`s working, the machine with the ip allow to ssh, in this case it's windows, so we had to install the program **putty** to make the conection by ssh with our ubuntu machine.
+To test if the rule is working, which is the machine with the ip allowed to ssh, in this case it's windows, we had to install the program **putty** to test the conection by ssh with our ubuntu machine.
 
 <br>
 
@@ -245,7 +245,7 @@ Insert the ip address of the machine that we want to connect with, in this case 
 
 <br>
 
-We will need the ``"username"`` and ``"password"``, without this two requirements you can`t connect, after this it's connected to the server machine by ssh from the windows machine.
+We will need the ``"username"`` and ``"password"``, without these two requirements you can`t connect, after this is connected to the server machine by ssh from the windows machine.
 
 In the image below you can see that we are connected to the **server** wich use the ip address **192.168.43.193.**
 
@@ -258,7 +258,7 @@ In the image below you can see that we are connected to the **server** wich use 
 
 <br>
 
-Then if we try to connect with another ip address machines that are not allowed, are actually rejected we are not going to be able to connect.
+Then if we try to connect with another ip address machines that are not allowed, we can see that they are actually rejected and we are not going to be able to connect.
 
 Below you will see an example. We tried to connect with an ubuntu machine using the ip **192.168.43.209**, you will see it was rejected, we couldn't connect to the server.
 
@@ -279,7 +279,7 @@ Below you will see an example. We tried to connect with an ubuntu machine using 
 
 The HTTP protocol is based on the client-server model, where a client (such as a web browser) sends a request to a server, and the server responds with a response that contains the requested resource (such as a web page).
 
-**The HTTP protocol by default uses port 80** for communication between clients and servers.
+**The HTTP protocol by default uses port 80** to communication between clients and servers.
 
 When a client, such as a web browser, sends an HTTP request to a server, the request is sent through the server's port 80, unless another port is explicitly specified. Similarly, when a web server responds to an HTTP request, the response is sent back to the client through port 80, unless another port is specified in the response.
 
@@ -299,7 +299,7 @@ sudo ufw status numbered
 
 <br>
 
-After having the HTTP rule denied, we have to look for the entry for **"Apache"** and make sure that we have not access. In case you want to allow the http protocol in your sever, you can enable it with the following command: ``sudo ufw allow http`` 
+After having the HTTP rule denied, we have to look for the entry for **"Apache"** and make sure that we do not have access. In case you want to allow the http protocol in your sever, you can enable it with the following command: ``sudo ufw allow http`` 
 
 ## **Test that the applied firewall rules are working correctly.**
 
@@ -315,14 +315,14 @@ To verify that the rule was applied correctly we have a couples of options:
 http://192.168.43.193:80/
 ```
 
-In the image below you can see the connection was rejected, it never connected, so the firewall rule it's working.
+In the image below you can see the connection was rejected, it never connected, so the firewall rule is working.
 
 <br>
 
 ![](img/22.png)
 <br>
 
-On this other imagen we tried to use the service from the server, so we can see that the apache service it's working because it's a local service connection, you can see that it's using port 80.
+In this other image, we tried to use the service from the server, so we can see that the apache service is working because it's a local service connection, you can see that it's using port 80.
 
 ```
 http://localhost:80/
@@ -359,15 +359,15 @@ The main **difference between HTTP and HTTPS is that HTTPS uses an additional se
 
 HTTPS is commonly used in financial transactions, online purchases, and in any situation where secure data transfer is required. Websites that use HTTPS have a lock icon in the browser address bar and their **URL begins with "https://" instead of "http://"**. 
 
-> It is important to note that other protocols, such as HTTPS, also use port 80 by default for communication with the server, but **port 443 is typically used for secure communication over HTTPS**.
+> It is important to note that other protocols, such as HTTPS also use port 80 by default to communicate with the server, but **port 443 is typically used for secure communication over HTTPS**.
 
-We are going to add this rule to our firewall, first of all we need to verify that the rule to the **port 443** it's enabled in ufw.
+We are going to add this rule to our firewall, but first of all we need to verify that the rule to the **port 443** is enabled in ufw.
 
 ```
-sudo ufw status ---> To check if the rule exist.
-sudo ufw allow 443/tcp ---> To add the rule to our firewall and make the port 443 enable.
+sudo ufw status ---> To check if the rule exists.
+sudo ufw allow 443/tcp ---> To add the rule to our firewall and enable the port 443.
 ```
-Once we created the rule for protocol HHTPS using the port 443 we can check it using again the command ``sudo ufw status`` and this time we have to be ables to see the port an protocol being able and open to use.
+Once we created the rule for protocol HHTPS using the port 443 we can check it using again the command ``sudo ufw status`` and this time we have to be able to see the port and protocol enabled and open to use.
 
 <br>
 
@@ -378,7 +378,7 @@ Once we created the rule for protocol HHTPS using the port 443 we can check it u
 
 <br>
 
-With this rule working we can use the browser in a more secure way and create web domains more secures than with the HTTP protocol.
+With this rule working we can use the browser in a more secure way and create web domains more secure than with the HTTP protocol.
 
 <br>
 
@@ -388,13 +388,13 @@ With this rule working we can use the browser in a more secure way and create we
 
 <br>
 
-To check and prove if the firewall rule that we added about the **HTTPS protocol** it's working we can go to the browser and now we are going to be ables to open a HTTPS direction, this give us more security and a safe domain, it should appear the **https** before the url direction, in this case we used:
+To check and prove if the firewall rule that we added for the **HTTPS protocol** is working, we can go to the browser and now we are going to be able to open a HTTPS direction. This gives us more security and a safe domain, it should appear **https** before the url direction, in this case we used:
 
 ```
 https://192.168.43.193:443
 ```
 
-We can see below that the connectioin it's not complete secure, this it's because we are using a demo SSL certificate to prove the connection and if the firewall rule it's working.
+We can see below that the connection is not completely secure, this is because we are using a demo SSL certificate to approve the connection and approve if the firewall rule is working.
 
 <br>
 
@@ -412,7 +412,7 @@ Enabling **port 3306** in UFW (Uncomplicated Firewall) in Ubuntu will let us all
 
 **Port 3306 is the default port used by MySQL** to accept incoming network connections, and if this port is not open in the firewall, external clients will not be able to connect to the MySQL database server.
 
-With this protocol we can allow the remote access to our database of MySQL, so it's easier to connect and modify it for externals clients.
+With this protocol we can allow the remote access to our database of MySQL, so it's easier to connect and modify it for external clients.
 
 To allow this protocol we applied the command ``sudo ufw allow mysql`` and we checked that was correctly apllied using the command ``ufw status numbered``
 
@@ -430,7 +430,7 @@ To allow this protocol we applied the command ``sudo ufw allow mysql`` and we ch
 ## **TESTING MySQL PROTOCOL**
 <br>
 
-To prove that the firewall rule created it's working we are going to connect to the Mysql database from another machine, using the command:``mysql -u user -p -h ipserver``
+To prove that the firewall rule created is working we are going to connect to the Mysql database from another machine, using the command:``mysql -u user -p -h ipserver``
 
 ```
 mysql -u anais -p -h 192.168.43.193
@@ -447,7 +447,7 @@ mysql -u anais -p -h 192.168.43.193
 
 **Once port 3306 has been enabled on the UFW, external clients should be able to connect to the MySQL database server on that port**. It is important to note that by allowing traffic on a port, you are opening the door to potential security threats, so it is important to ensure that other appropriate security measures are in place to protect the MySQL database server.
 
-We were able to connect to the mysql database remotely, for this **we need to know the IP address of the server and the password**, without these two requirements we could not connect.
+We were able to connect to the mysql database remotely. To do so, **we need to know the IP address of the server and the password**. Without these two requirements we could not connect.
 
 <br>
 
@@ -455,14 +455,14 @@ We were able to connect to the mysql database remotely, for this **we need to kn
 
 <br>
 
-In the case of windows and it's firewall functions are very different from those of ubuntu as windows is much more automatic, every time you install a program, windows opens the ports it needs to work automatically, which makes the firewall configuration a bit useless, in my opinion with windows and it's firewall, the most convenient is to override ports or specific entries.
+In the case of windows, its firewall functions are very different from those of ubuntu as windows is much more automatic, every time you install a program, windows opens the ports it needs to work automatically, which makes the firewall configuration a bit useless, in my opinion with windows and its firewall, the most convenient is to override ports or specific entries.
 
 In this case we enabled the ssh connection in both directions, and the HTTP protocol.
 
 
 ## **Firewall installation and configuration.**
 
-In this part we are going to create and configurate a couple of firewall rules in Windows.
+In this part created and configurated a couple of firewall rules in Windows.
 
 Windows comes with a built-in firewall that can be used to protect your system from online attacks, so in the case of windows we don't have to install the firewall from scratch, we simply have to activate it.
 
@@ -477,11 +477,11 @@ Now that we have the firewall active and working we can start create rules on it
 
 **- SSH PROTOCOL**
 
-First of all we have to check if we have the SSH intalled, if we don't have we can install it using the command ``winget install Microsoft.OpenSSH.Beta``
+First of all we have to check if we have the SSH intalled, if we don't have it, we can install it using the command ``winget install Microsoft.OpenSSH.Beta``
 
 Now we can start to create the rule.
 
-To allow and create rule with the Windows Firewall we just have to click on:
+To allow and create rules with the Windows Firewall we just have to click on:
 
 1) **"Advanced settings"** in the left sidebar 
 
@@ -489,11 +489,11 @@ To allow and create rule with the Windows Firewall we just have to click on:
 
 3) After, click on "New Rule" in the right sidebar, and follow the prompts to select **"Port"**, choose **"TCP"** as the protocol type, and enter **"22"** as the port number. 
 
-4) Select **"Allow the connection"** and **all profile options**, and then give a name to the new rule, we called it **"conexion SSH"**, then, just have to click **"Finish"** to complete the process. With these steps, we are already allows to use the SSH connection through the Winodws firewall.
+4) Select **"Allow the connection"** and **all profile options**, and then give a name to the new rule, we called it **"conexion SSH"**, then, just have to click **"Finish"** to complete the process. With these steps, we are already allowing the use of SSH connection through the Winodws firewall.
 
 ![](img/34.gif)
 
-Another and easier way to install OpenSSH in Windows it's by graphical environment, below you can see how to install it, using this option, windows open the 22 port automatically, so we don't have to configurate and create the rule ourself.
+Another and easier way to install OpenSSH in Windows is by graphical environment, below you can see how to install it. Using this option, windows open the 22 port automatically, so we don't have to configurate and create the rule ourself.
 
 To install OpenSSH by this option we used a Windows 10 machine.
 
@@ -501,16 +501,16 @@ To install OpenSSH by this option we used a Windows 10 machine.
 
 ![](img/36.png)
 
-Once we have it installed we have to active the SSH service using the services options of windows, after actived it we can check it if it's active using the commmand ``Get-Service -Name *ssh*``
+Once we have installed it, we have to active the SSH service using the services options of windows. After activating it we can check if it's active using the commmand ``Get-Service -Name *ssh*``
 
 ![](img/51.png)
 
 
-> **NOTE:** In case that you as server want just allow the connection from your machine to another ones you must have to install the **clientSSH** and in case you only want to allow others to connect to your machine but you cannot connect to other machines you should install only **ServerSSH.** 
+> **NOTE:** In case that you as a server want to just allow the connection from your machine to another one, you must install the **clientSSH** and in case you only want to allow others to connect to your machine but you cannot connect to other machines you should install only **ServerSSH.** 
 
 > In our case we installed both because we wanted to allow both connections.
 
-We can also checked if we have the port opened using the command ``netstat -bano | more``
+We also have to check if we have the port open using the command ``netstat -bano | more``
 
 ![](img/38.png)
 
@@ -520,9 +520,9 @@ We can also checked if we have the port opened using the command ``netstat -bano
 
 ## **TESTING SSH PROTOCOL**
 
-With the rule created we can try the connection to check if the rule it's actually working correctly, our machine it's using the ip address **192.168.43.242,** now we are ables to connect through ssh from our windows machine to any other machine knowing the ip address, the user and the password.
+With the rule created we can try the connection to check if the rule is actually working correctly, our machine is using the ip address **192.168.43.242,**. Now we are able to connect through ssh from our windows machine to any other machine knowing the ip address, the username and the password.
 
-This time we connected **from our machine to another Windows machine** using SSH, to connect we used the command ``ssh user@ip-address``
+This time we connected **from our machine to another Windows machine** using SSH. To connect we used the command ``ssh user@ip-address``
 
 ```
 ssh cristian@192.168.43.236
@@ -538,13 +538,13 @@ ssh anais@192.168.43.242
 
 ![](img/40.gif)
 
-With this we proved that the ssh protocol it's working in our windows firewall.
+With this, we proved that the ssh protocol is working in our windows firewall.
 
 <br>
 
 **- HTTP PROTOCOL**
 
-To allow the HTTP protocol this time we used another option to enable the **port 80** wich is the port that use the **HTTP protol**, to configurate the firewall using this option we have to **configurate the docker file** first using the next lines:
+To allow the HTTP protocol, this time we used another option to enable the **port 80** wich is the port that use the **HTTP protol**. To configurate the firewall using this option we have to **configurate the docker file** first using the next lines:
 
 ```dockerfile
 FROM nginx
@@ -554,7 +554,7 @@ It will look like this:
 
 ![](img/52.png)
 
-Once we have the docker file configurated we have to create a script to generate the respective container in nginx.
+Once we have the docker file configurated, we have to create a script to generate the respective container in nginx.
 
 ![](img/53.png)
 
@@ -567,11 +567,11 @@ Now we have to execute the ```main.ps1`` script.
 
 ![](img/54.png)
 
-**Docker enable the ports automatically** for a short time, so we only need to active the port in the firewall if we configurated the rule in the clasic way.
+**Docker enables the ports automatically** for a short time, so we only need to activate the port in the firewall if we configurated the rule in the clasic way.
 
-After followed all the steps we have the HTTP protocol working and opened with the port 80.
+After following all the steps we have the HTTP protocol working and open with the port 80.
 
-> NOTE: In case of configurate the rule in the classic way, we have to active the port 80 using the firewall configurations.
+> NOTE: In case of configurating the rule in the classic way, we have to active the port 80 using the firewall configurations.
 
 <br>
 
@@ -580,11 +580,11 @@ After followed all the steps we have the HTTP protocol working and opened with t
 
 ## **TESTING HTTP PROTOCOL**
 
-To prove that our firewall rule it`s working even when we configurated it in a different way, we can use the command ``docker ps``, this command it's going to show us the containers that we have running and the ports that we are being used.
+To prove that our firewall rule is working even when we configurated it in a different way, we can use the command ``docker ps``. This command is going to show us the containers that we have running and the ports that we are using.
 
 ![](img/55.png)
 
-After we checked that the port it's opened we can go to the browser and using the ip of our machine **(192.168.43.242)** nginx it will be working using the **port 80.**
+After we checked that the port is open, we can go to the browser and using the ip of our machine **(192.168.43.242)** nginx it will be working using the **port 80.**
 
 ```
 192.168.43.424:80
@@ -594,7 +594,7 @@ After we checked that the port it's opened we can go to the browser and using th
 
 ## **- HTTPS Protocol**
 
-We tried to configurate this rule, but it wasn't working because we are using local machines and we don't have a register domain to generate the **SSL certificate**, so what we did was enable the **port 443** but in our case we can't not check if it's working correctly.
+We tried to configurate this rule, but it wasn't working because we are using local machines and we don't have a register domain to generate the **SSL certificate**, so what we did was enable the **port 443** but in our case we cannot check if it's working correctly.
 
 Even tho, to configurate this rule and open the port we just have to create a new inbound rule in our firewall.
 
@@ -616,4 +616,4 @@ https://ip-server
 
 <br>
 
-The Ubuntu and Windows firewalls have similarities in their ability to **block unauthorized traffic** and **control access to system services**, but also have notable differences. The Ubuntu firewall is based on iptables and uses rules to filter network traffic, while the Windows firewall uses the **Windows Firewall with Advanced Security and has a more user-friendly GUI**. Windows firewall is enabled by default in all versions, while **Ubuntu firewall may not be enabled by default**. Configuring the Windows firewall may be easier for less experienced users due to its intuitive GUI, while the Ubuntu firewall may be more complex due to its rule-based configuration. Both firewalls are effective in protecting against external threats, and the choice between them depends on the specific needs and skills of the system administrator.
+The Ubuntu and Windows firewalls have similarities in their abilities to **block unauthorized traffic** and **control access to system services**, but also have notable differences. The Ubuntu firewall is based on ip tables and uses rules to filter network traffic, while the Windows firewall uses the **Windows Firewall with Advanced Security and has a more user-friendly GUI**. Windows firewall is enabled by default in all versions, while **Ubuntu firewall may not be enabled by default**. Configuring the Windows firewall may be easier for less experienced users due to its intuitive GUI, while the Ubuntu firewall may be more complex due to its rule-based configuration. Both firewalls are effective in protecting against external threats, and the choice between them depends on the specific needs and skills of the system administrator.
