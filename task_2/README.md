@@ -4,7 +4,7 @@
 
 </center>
 
-***Author:*** Anais G. Aguiar Contreras
+***Author:*** Anais G. Aguiar Contreras.
 
 ***Company:*** EUtech Assignments.
 
@@ -475,7 +475,7 @@ Now that we have the firewall active and working we can start create rules on it
 ## **Creation of firewall rules.**
 <br>
 
-**- SSH PROTOCOL**
+**- SSH PROTOCOL.**
 
 First of all we have to check if we have the SSH intalled, if we don't have it, we can install it using the command ``winget install Microsoft.OpenSSH.Beta``
 
